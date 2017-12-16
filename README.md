@@ -1,10 +1,10 @@
 # Scorecard-Automation-Project
 
-# Summary
+## Summary
 
 We are working on raw datasets related to street, sidewalks, business Improvement districts which are needed to organize, arrange, structure, and format according to open data policy and technical standards manual. In the end, uploading datasets to Open Data Portal and making sure that data is user-friendly. In this project, we will covert raw data file (Monthly Street Cleanliness historical data) to be converted into a final file ready to be uploaded to Open Data Portal while using Open Refine (ETL) tool.
 
-# Procedure
+## Procedure
 
 A step-by-step guided process to direct the reader through whole process is as follow:
 
