@@ -43,6 +43,7 @@ Step 9: Rename different columns like “Borough” to “borough”, “Distric
       "mode": "record-based",
       "facets": []
     },
+    
     "columnName": "Borough"
   },
   {
@@ -52,6 +53,7 @@ Step 9: Rename different columns like “Borough” to “borough”, “Distric
       "mode": "record-based",
       "facets": []
     },
+    
     "columnName": "District"
   },
   {
@@ -61,12 +63,14 @@ Step 9: Rename different columns like “Borough” to “borough”, “Distric
       "mode": "record-based",
       "facets": []
     },
+    
     "newColumnName": "geography",
     "columnInsertIndex": 1,
     "baseColumnName": "Borough",
     "expression": "grel:value.replace(\"Manhattan\",\"Community Distrist\")",
     "onError": "set-to-blank"
   },
+  
   {
     "op": "core/column-addition",
     "description": "Create column timeframe at index 1 based on column Borough using expression grel:value.replace(\"Manhattan\",\"Month\")",
@@ -74,12 +78,14 @@ Step 9: Rename different columns like “Borough” to “borough”, “Distric
       "mode": "record-based",
       "facets": []
     },
+    
     "newColumnName": "timeframe",
     "columnInsertIndex": 1,
     "baseColumnName": "Borough",
     "expression": "grel:value.replace(\"Manhattan\",\"Month\")",
     "onError": "set-to-blank"
   },
+  
   {
     "op": "core/column-addition",
     "description": "Create column service at index 1 based on column Borough using expression grel:value.replace(\"Manhattan\",\"Street Cleanliness\")",
@@ -87,12 +93,14 @@ Step 9: Rename different columns like “Borough” to “borough”, “Distric
       "mode": "record-based",
       "facets": []
     },
+    
     "newColumnName": "service",
     "columnInsertIndex": 1,
     "baseColumnName": "Borough",
     "expression": "grel:value.replace(\"Manhattan\",\"Street Cleanliness\")",
     "onError": "set-to-blank"
   },
+  
   {
     "op": "core/column-addition",
     "description": "Create column cd_full_title at index 5 based on column District using expression grel:value.replace(\"MN\",\"Manhattan Community District\").replace(\"BX\", \"Bronx Community District\").replace(\"BKN\",\"Brooklyn Community District\").replace(\"QE\",\"Queens Community District\").replace(\"SI\",\"Staten Island Community District\")",
@@ -100,12 +108,14 @@ Step 9: Rename different columns like “Borough” to “borough”, “Distric
       "mode": "record-based",
       "facets": []
     },
+    
     "newColumnName": "cd_full_title",
     "columnInsertIndex": 5,
     "baseColumnName": "District",
     "expression": "grel:value.replace(\"MN\",\"Manhattan Community District\").replace(\"BX\", \"Bronx Community District\").replace(\"BKN\",\"Brooklyn Community District\").replace(\"QE\",\"Queens Community District\").replace(\"SI\",\"Staten Island Community District\")",
     "onError": "set-to-blank"
   },
+  
   {
     "op": "core/column-addition",
     "description": "Create column cd_short_title at index 6 based on column cd_full_title using expression grel:value.replace(\"Manhattan Community District\",\"Manhattan CD \").replace(\"Bronx Community District\", \"Bronx CD \").replace(\"Brooklyn Community District\",\"Brooklyn CD \").replace(\"Queens Community District\",\"Queens CD \").replace(\"Staten Island Community District\",\"Staten Island CD \")",
@@ -113,12 +123,14 @@ Step 9: Rename different columns like “Borough” to “borough”, “Distric
       "mode": "record-based",
       "facets": []
     },
+    
     "newColumnName": "cd_short_title",
     "columnInsertIndex": 6,
     "baseColumnName": "cd_full_title",
     "expression": "grel:value.replace(\"Manhattan Community District\",\"Manhattan CD \").replace(\"Bronx Community District\", \"Bronx CD \").replace(\"Brooklyn Community District\",\"Brooklyn CD \").replace(\"Queens Community District\",\"Queens CD \").replace(\"Staten Island Community District\",\"Staten Island CD \")",
     "onError": "set-to-blank"
   },
+  
   {
     "op": "core/column-addition",
     "description": "Create column borocd at index 7 based on column cd_short_title using expression grel:value.replace(\"Manhattan CD \",\"1\").replace(\"Bronx CD \",\"2\").replace(\"Brooklyn CD \",\"3\").replace(\"Queens CD \",\"4\").replace(\"Staten Island CD \",\"5\")",
@@ -126,12 +138,15 @@ Step 9: Rename different columns like “Borough” to “borough”, “Distric
       "mode": "record-based",
       "facets": []
     },
+    
     "newColumnName": "borocd",
     "columnInsertIndex": 7,
     "baseColumnName": "cd_short_title",
     "expression": "grel:value.replace(\"Manhattan CD \",\"1\").replace(\"Bronx CD \",\"2\").replace(\"Brooklyn CD \",\"3\").replace(\"Queens CD \",\"4\").replace(\"Staten Island CD \",\"5\")",
     "onError": "set-to-blank"
   },
+  
+  
   {
     "op": "core/text-transform",
     "description": "Text transform on cells in column borocd using expression value.toNumber()",
@@ -139,24 +154,28 @@ Step 9: Rename different columns like “Borough” to “borough”, “Distric
       "mode": "record-based",
       "facets": []
     },
+    
     "columnName": "borocd",
     "expression": "value.toNumber()",
     "onError": "keep-original",
     "repeat": false,
     "repeatCount": 10
   },
+  
   {
     "op": "core/column-rename",
     "description": "Rename column Borough to borough",
     "oldColumnName": "Borough",
     "newColumnName": "borough"
   },
+  
   {
     "op": "core/column-rename",
     "description": "Rename column District to district",
     "oldColumnName": "District",
     "newColumnName": "district"
   },
+  
   {
     "op": "core/column-rename",
     "description": "Rename column Cleaning Section to cleaning_section",
